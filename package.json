@@ -4,6 +4,8 @@
   "description": "Elvish Calendar conversion of dates and utilities",
   "main": "lib/index.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "npm run build -- --watch",
     "prepublish": "npm run build",
     "build": "babel src -d lib --copy-files",
     "lint": "eslint src",

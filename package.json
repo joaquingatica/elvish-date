@@ -10,7 +10,7 @@
     "prepublish": "yarn run build",
     "build": "babel src -d lib --copy-files",
     "lint": "eslint src test",
-    "start": "node lib"
+    "start": "yarn run build && node lib"
   },
   "repository": {
     "type": "git",

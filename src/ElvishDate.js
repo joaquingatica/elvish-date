@@ -1,38 +1,57 @@
-import moment from 'moment';
-import Time from './Time';
-
 class ElvishDate {
 
-  /* ******* ATRIBUTES ******* */
-
-  /*
-   * constructor() - current time
-   * constructor(int) - given time
-   * constructor(Date) - given time
+  /**
+   * constructor()
+   * constructor(yen, loa, period) - for single day periods
+   * constructor(yen, loa, period, day) - for multi day periods
+   * constructor(ElvishDate)
+   * constructor(Date)
    */
   constructor(...args) {
-    if (args.length === 0) {
-      this.gregorian = new Date();
-    } else if (args.length === 1) {
-      const time = args[0];
-      if (typeof time === 'number') {
-        this.gregorian = new Date(time);
-      } else if (time instanceof Date) {
-        this.gregorian = new Date();
+    if (args.length <= 0) {
+      this.setGregorianDate(new Date());
+    } else {
+      const firstArg = args[0];
+      if (firstArg instanceof Date) {
+        this.setGregorianDate(firstArg);
+      } else if (firstArg instanceof ElvishDate) {
+        this.copyElvishDate(firstArg);
+      } else {
+        this.setElvishDate(...args);
       }
     }
+  }
+
+  setElvishDate(yen, loa, period, day) {
+    this.yen = yen;
+    this.loa = loa;
+    this.period = period;
+    this.day = day;
+  }
+  setGregorianDate(date) {
+    this.gregorian = date;
+    this.convert();
+  }
+  copyElvishDate(date) {
+    this.setElvishDate(date.yen, date.loa, date.period, date.day);
+  }
+  convert() {
+    this.test = 'test';
   }
 
   setSunset(sunset) {
     this.sunset = sunset;
     return this;
   }
-  convert() {
-    console.log(this.gregorian);
-  }
 
   /**
-   * Accepts no argument, Date instance, or same arguments as Date constructor
+   * Accepts same arguments as the standard Date constructor, or accepts a Date instance
+   * fromDate()
+   * fromDate(int)
+   * fromDate(dateString)
+   * fromDate(year, month[, day[, hours[, minutes[, seconds[, milliseconds]]]]])
+   * fromDate(Date)
+   *
    * @param args
    * @returns {ElvishDate}
    */
@@ -45,7 +64,6 @@ class ElvishDate {
     }
     return new ElvishDate(date);
   }
-
 }
 
 export default ElvishDate;

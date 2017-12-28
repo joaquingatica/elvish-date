@@ -4,9 +4,10 @@
   "description": "Elvish Calendar conversion of dates and utilities",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "npm run build -- --watch",
-    "prepublish": "npm run build",
+    "build:test": "babel test -d lib-test --copy-files",
+    "test": "yarn run build:test && mocha lib-test --require babel-core/register",
+    "watch": "yarn run build --watch",
+    "prepublish": "yarn run build",
     "build": "babel src -d lib --copy-files",
     "lint": "eslint src",
     "start": "node lib"
@@ -30,7 +31,8 @@
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-react": "^6.10.0"
+    "eslint-plugin-react": "^6.10.0",
+    "mocha": "^4.0.1"
   },
   "dependencies": {
     "moment": "^2.17.1",

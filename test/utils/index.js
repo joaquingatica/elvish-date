@@ -14,5 +14,5 @@ export default {
   },
   gregorianEquals(date1, date2) {
     assert.equal(date1.toString(), date2.toString());
-  }
+  },
 };

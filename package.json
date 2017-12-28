@@ -9,7 +9,7 @@
     "watch": "yarn run build --watch",
     "prepublish": "yarn run build",
     "build": "babel src -d lib --copy-files",
-    "lint": "eslint src",
+    "lint": "eslint src test",
     "start": "node lib"
   },
   "repository": {

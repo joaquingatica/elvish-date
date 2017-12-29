@@ -1,17 +1,20 @@
+import calendar from './helpers/calendar';
+
 class ElvishDate {
 
   // Public API
 
   /**
    * constructor()
-   * constructor(yen, loa, period) - for single day periods
-   * constructor(yen, loa, period, day) - for multi day periods
-   * constructor(ElvishDate)
    * constructor(Date)
+   * constructor(ElvishDate)
+   * constructor(attributes)
+   * constructor(yen, loa, period[, day[, hour[, minute[, second[, millisecond]]]]])
    *
    * @param args
    */
   constructor(...args) {
+    this.initializeAttributes();
     if (args.length <= 0) {
       this.setGregorianDate(new Date());
     } else {
@@ -20,8 +23,11 @@ class ElvishDate {
         this.setGregorianDate(firstArg);
       } else if (firstArg instanceof ElvishDate) {
         this.copyElvishDate(firstArg);
+      } else if (typeof firstArg === 'object') {
+        this.setAttributes(firstArg);
       } else {
-        this.setElvishDate(...args);
+        const attributes = this.parseConstructorArguments(...args);
+        this.setAttributes(attributes);
       }
     }
   }
@@ -31,7 +37,7 @@ class ElvishDate {
    * @returns {number}
    */
   static get length() {
-    return 4;
+    return 8;
   }
 
   /**
@@ -67,30 +73,35 @@ class ElvishDate {
    * @returns {number}
    */
   getYen() {
+    return this.yen;
   }
   /**
    * Returns the roman numerals representation of the Yen for the specified date
    * @returns {string}
    */
   getYenNumeral() {
+    return calendar.getYenNumeral(this.yen);
   }
   /**
    * Return the number of the Loa (1-144) for the specified date
    * @returns {number}
    */
   getLoa() {
+    return this.loa;
   }
   /**
    * Return the number (0-8) of the Period for the specified date
    * @returns {number}
    */
   getPeriod() {
+    return this.period;
   }
   /**
    * Return the name of the Period for the specified date
    * @returns {string}
    */
   getPeriodName() {
+    return calendar.getPeriodName(this.period);
   }
   /**
    * Return the number of Day of the Period (1-based index, upper limit depends on Period)
@@ -98,18 +109,21 @@ class ElvishDate {
    * @returns {number}
    */
   getDayOfPeriod() {
+    return this.day;
   }
   /**
    * Return the number (0-5) of Day of the Week for the specified date
    * @returns {number}
    */
   getDayOfWeek() {
+    return calendar.getDayOfWeek(this);
   }
   /**
    * Return the name of the Day of the Week for the specified date
    * @returns {string}
    */
   getDayOfWeekName() {
+    return calendar.getDayOfWeekName(this.getDayOfWeek());
   }
   /**
    * Return the number of the Hour (from 0, variable upper limit depending sunset time)
@@ -117,24 +131,28 @@ class ElvishDate {
    * @returns {number}
    */
   getHours() {
+    return this.hour;
   }
   /**
    * Return the number of the Minute for the specified date
    * @returns {number}
    */
   getMinutes() {
+    return this.minute;
   }
   /**
    * Return the number of the Second for the specified date
    * @returns {number}
    */
   getSeconds() {
+    return this.second;
   }
   /**
    * Return the number of the Millisecond for the specified date
    * @returns {number}
    */
   getMilliseconds() {
+    return this.millisecond;
   }
 
   /**
@@ -143,6 +161,7 @@ class ElvishDate {
    * @returns {number}
    */
   getTime() {
+    return calendar.getTime(this);
   }
 
   /**
@@ -150,18 +169,21 @@ class ElvishDate {
    * @param {number} yen
    */
   setYen(yen) {
+    calendar.setYen(this, yen);
   }
   /**
    * Sets the Loa value (1-144) for a specified date
    * @param {number} loa
    */
   setLoa(loa) {
+    calendar.setLoa(this, loa);
   }
   /**
    * Sets the Period value (0-8) for a specified date
    * @param {number} period
    */
   setPeriod(period) {
+    calendar.setPeriod(this, period);
   }
   /**
    * Sets the Day of Period value (1-based index, upper limit depends on Period)
@@ -169,30 +191,35 @@ class ElvishDate {
    * @param {number} dayOfPeriod
    */
   setDayOfPeriod(dayOfPeriod) {
+    calendar.setDayOfPeriod(this, dayOfPeriod);
   }
   /**
    * Sets the Hour value for a specified date
    * @param {number} hours
    */
   setHours(hours) {
+    calendar.setHours(this, hours);
   }
   /**
    * Sets the Minute value for a specified date
    * @param {number} minutes
    */
   setMinutes(minutes) {
+    calendar.setMinutes(this, minutes);
   }
   /**
    * Sets the Second value for a specified date
    * @param {number} seconds
    */
   setSeconds(seconds) {
+    calendar.setSeconds(this, seconds);
   }
   /**
    * Sets the Millisecond value for a specified date
    * @param {number} milliseconds
    */
   setMilliseconds(milliseconds) {
+    calendar.setMilliseconds(this, milliseconds);
   }
   /**
    * Sets the time in number of milliseconds since Yestarë, I 1, 00:00:00 (>= 0)
@@ -200,6 +227,7 @@ class ElvishDate {
    * @returns {number}
    */
   setTime(time) {
+    calendar.setTime(this, time);
   }
 
   /**
@@ -207,31 +235,49 @@ class ElvishDate {
    * @returns {string}
    */
   toString() {
-    return '';
+    return calendar.toString(this);
   }
 
   // Internal Methods
 
-  setElvishDate(yen, loa, period, day) {
-    this.yen = yen;
-    this.loa = loa;
-    this.period = period;
-    this.day = day;
+  static getAttributeNames() {
+    return calendar.attributes;
+  }
+  parseConstructorArguments(...args) {
+    const keys = this.getAttributeNames();
+    const values = {};
+    if (args && args.length > 0) {
+      args.forEach((value, i) => {
+        values[keys[i]] = value;
+      });
+    }
+    return values;
+  }
+  initializeAttributes() {
+    this.yen = null;
+    this.loa = null;
+    this.period = null;
+    this.day = null;
+    this.hour = null;
+    this.minute = null;
+    this.second = null;
+    this.millisecond = null;
+  }
+  setAttributes(attributes) {
+    this.setYen(attributes.yen);
+    this.setLoa(attributes.loa);
+    this.setPeriod(attributes.period);
+    this.setDayOfPeriod(attributes.day);
+    this.setHours(attributes.hour);
+    this.setMinutes(attributes.minute);
+    this.setSeconds(attributes.second);
+    this.setMilliseconds(attributes.millisecond);
+  }
+  copyElvishDate(date) {
+    this.setAttributes(date);
   }
   setGregorianDate(date) {
     this.gregorian = date;
-    this.convert();
-  }
-  copyElvishDate(date) {
-    this.setElvishDate(date.yen, date.loa, date.period, date.day);
-  }
-  convert() {
-    this.test = 'test';
-  }
-
-  setSunset(sunset) {
-    this.sunset = sunset;
-    return this;
   }
 }
 

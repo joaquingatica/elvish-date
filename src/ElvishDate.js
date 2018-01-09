@@ -209,7 +209,7 @@ class ElvishDate {
    * @param {number} dayOfPeriod
    */
   setDayOfPeriod(dayOfPeriod) {
-    this.dayOfPeriod = dayOfPeriod;
+    this.day = dayOfPeriod;
   }
   /**
    * Sets the Hour value for a specified date

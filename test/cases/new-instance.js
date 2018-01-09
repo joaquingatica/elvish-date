@@ -4,7 +4,9 @@ import ElvishDate from '../../src/ElvishDate';
 describe('New Instance', function () {
   describe('constructor()', function () {
     it('should be created for current Date', function () {
-      utils.dateEquals(new ElvishDate().toDate(), new Date());
+      const now = new Date();
+      const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      utils.dateEquals(new ElvishDate().toDate(), today);
     });
   });
   describe('constructor(yen, loa, period)', function () {
@@ -13,7 +15,7 @@ describe('New Instance', function () {
     const period = 1;
     it(`should be created for yen ${yen}, loa ${loa} and period ${period}`, function () {
       const date = new ElvishDate(yen, loa, period);
-      utils.dateEquals(date, yen, loa, period);
+      utils.elvishEquals(date, yen, loa, period);
     });
   });
   describe('constructor(yen, loa, period, day)', function () {
@@ -23,7 +25,7 @@ describe('New Instance', function () {
     const day = 3;
     it(`should be created for yen ${yen}, loa ${loa}, period ${period} and day ${day}`, function () {
       const date = new ElvishDate(yen, loa, period, day);
-      utils.dateEquals(date, yen, loa, period, day);
+      utils.elvishEquals(date, yen, loa, period, day);
     });
   });
   describe('constructor(ElvishDate)', function () {
@@ -34,7 +36,7 @@ describe('New Instance', function () {
       const day = 3;
       const elvishDate = new ElvishDate(yen, loa, period, day);
       const date = new ElvishDate(elvishDate);
-      utils.elvishEquals(date, elvishDate);
+      utils.elvishDateEquals(date, elvishDate);
     });
   });
   describe('constructor(Date)', function () {

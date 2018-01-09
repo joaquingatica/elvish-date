@@ -30,12 +30,12 @@ const calendar = {
   calculatePeriodAndDayOfPeriod(loa, dayOfLoa) {
     const periods = constants.periods;
     const isLeap = this.isLeapLoa(loa);
-    let period = 1;
+    let period = 0;
     let dayOfPeriod = dayOfLoa;
     let end = false;
-    while (!end && (period < 10)) {
-      const periodLengths = periods[period - 1].length;
-      const periodLength = isLeap ? periodLengths.standard : periodLengths.leap;
+    while (!end && (period < periods.length)) {
+      const periodLengths = periods[period].length;
+      const periodLength = isLeap ? periodLengths.leap : periodLengths.standard;
       if (dayOfPeriod <= periodLength) { // is in period 'period'
         end = true;
       } else { // is not in period 'period'

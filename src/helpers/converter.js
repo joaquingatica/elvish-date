@@ -53,17 +53,16 @@ const converter = {
     let year = date.getFullYear();
     // calculate day of march of year 'year' in which loa begins
     let loaBeg = this.calculateYestareFromYear(year);
-    const loaDate = new Date(year, 2, loaBeg); // March = 2
+    let loaDate = new Date(year, 2, loaBeg); // March = 2
     // if that day hasn't come yet, use previous year's loa
     if (date.getTime() < loaDate.getTime()) {
       year -= 1;
       loaBeg = this.calculateYestareFromYear(year);
+      loaDate = new Date(year, 2, loaBeg);
     }
     // calculate loa
     const loa = this.calculateLoaFromYear(year);
     // get amount of days of ongoing loa
-    loaDate.setFullYear(year);
-    loaDate.setMonth(loaBeg);
     const dayOfLoa = utils.getDaysBetweenDates(loaDate, date);
     // calculate current month and day of month
     const period = calendar.calculatePeriod(loa, dayOfLoa);
@@ -91,13 +90,17 @@ const converter = {
     const period = elvishDate.getPeriod();
     const dayOfPeriod = elvishDate.getDayOfPeriod();
     const dayOfLoa = calendar.calculateDayOfLoa(yen, loa, period, dayOfPeriod);
-    const date = new Date();
-    date.setFullYear(((yen - 1) * 144) + loa);
-    date.setMonth(2); // March
-    date.setDate(calendar.calculateYestare(yen, loa));
-    date.setDate(date.getDate() + (dayOfLoa - 1));
+
+    const fullYear = ((yen - 1) * 144) + loa;
+    const month = 2;
+    const day = calendar.calculateYestare(yen, loa);
+    const date = new Date(fullYear, month, day);
+
+    const result = new Date(date);
+    result.setDate(result.getDate() + (dayOfLoa - 1));
+
     // TODO extend with sunset when available
-    return date;
+    return result;
   },
 };
 

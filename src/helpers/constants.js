@@ -13,7 +13,7 @@ const constants = {
     yen: 'Yen',
     loa: 'Loa',
     period: 'Period of Loa',
-    dayOfPeriod: 'Day of Period',
+    day: 'Day of Period',
     hour: 'Hour',
     minute: 'Minute',
     second: 'Second',

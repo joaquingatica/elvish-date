@@ -257,11 +257,11 @@ class ElvishDate {
    */
   toString() {
     const period = this.getPeriod();
-    const dayOfWeek = this.getDayOfWeek();
+    const dayOfWeekName = this.getDayOfWeekName();
     const periodName = this.getPeriodName();
     const yenNumeral = this.getYenNumeral();
     const loa = this.getLoa();
-    let string = `${dayOfWeek}, ${periodName}`;
+    let string = `${dayOfWeekName}, ${periodName}`;
     if (!calendar.isPeriodSingleDay(period)) {
       const dayOfPeriod = this.getDayOfPeriod();
       string += ` ${dayOfPeriod}`;

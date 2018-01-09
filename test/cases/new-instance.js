@@ -4,7 +4,7 @@ import ElvishDate from '../../src/ElvishDate';
 describe('New Instance', function () {
   describe('constructor()', function () {
     it('should be created for current Date', function () {
-      utils.gregorianEquals(new ElvishDate().gregorian, new Date());
+      utils.dateEquals(new ElvishDate().toDate(), new Date());
     });
   });
   describe('constructor(yen, loa, period)', function () {
@@ -39,9 +39,9 @@ describe('New Instance', function () {
   });
   describe('constructor(Date)', function () {
     it('should be created for provided Date', function () {
-      const gregorianDate = new Date();
-      const date = new ElvishDate(gregorianDate);
-      utils.gregorianEquals(date.gregorian, gregorianDate);
+      const date = new Date();
+      const elvishDate = new ElvishDate(date);
+      utils.dateEquals(elvishDate.toDate().toString(), date);
     });
   });
 });

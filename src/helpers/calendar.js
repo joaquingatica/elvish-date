@@ -5,58 +5,127 @@ import constants from './constants';
 
 const calendar = {
   getYenNumeral(yen) {
-    return utils.getRomanNumeral(yen);
+    return utils.getRomanFromNumber(yen);
   },
   getPeriodName(period) {
     return constants.periods[period].name;
   },
-  getDayOfWeek(date) {
-    // TODO
-  },
   getDayOfWeekName(dayOfWeek) {
     return constants.daysOfWeek[dayOfWeek];
-  },
-  getTime(date) {
-    // TODO
-  },
-
-  // TODO
-  setYen(date, yen) {
-  },
-  setLoa(date, loa) {
-  },
-  setPeriod(date, period) {
-  },
-  setDayOfPeriod(date, dayOfPeriod) {
-  },
-  setHours(date, hours) {
-  },
-  setMinutes(date, minutes) {
-  },
-  setSeconds(date, seconds) {
-  },
-  setMilliseconds(date, milliseconds) {
-  },
-  setTime(date, time) {
-  },
-
-  toString(date) {
-    const period = date.getPeriod();
-    const dayOfWeek = date.getDayOfWeek();
-    const periodName = date.getPeriodName();
-    const yenNumeral = date.getYenNumeral();
-    const loa = date.getLoa();
-    let string = `${dayOfWeek}, ${periodName}`;
-    if (!this.isPeriodSingleDay(period)) {
-      const dayOfPeriod = date.getDayOfPeriod();
-      string += ` ${dayOfPeriod}`;
-    }
-    string += `, ${yenNumeral} ${loa}`;
-    return string;
   },
 
   isPeriodSingleDay(period) {
     return constants.periods[period].length.standard === 1;
+  },
+  isPeriodMonth(period) {
+    return (period > 1 && period < 5) || (period > 5 && period < 9);
+  },
+  isLeapLoa(loa) {
+    return loa % 12 === 0;
+  },
+
+  calculateMonthFromPeriod(period) {
+    return (period < 4) ? period - 1 : period - 2;
+  },
+  calculatePeriodAndDayOfPeriod(loa, dayOfLoa) {
+    const periods = constants.periods;
+    const isLeap = this.isLeapLoa(loa);
+    let period = 1;
+    let dayOfPeriod = dayOfLoa;
+    let end = false;
+    while (!end && (period < 10)) {
+      const periodLengths = periods[period - 1].length;
+      const periodLength = isLeap ? periodLengths.standard : periodLengths.leap;
+      if (dayOfPeriod <= periodLength) { // is in period 'period'
+        end = true;
+      } else { // is not in period 'period'
+        dayOfPeriod -= periodLength;
+        period += 1;
+      }
+    }
+    const ret = { period, dayOfPeriod };
+    return ret;
+  },
+  calculatePeriod(loa, dayOfLoa) {
+    return this.calculatePeriodAndDayOfPeriod(loa, dayOfLoa).period;
+  },
+  calculateDayOfPeriod(loa, dayOfLoa) {
+    return this.calculatePeriodAndDayOfPeriod(loa, dayOfLoa).dayOfPeriod;
+  },
+  calculateYestare(yen, loa) {
+    let yestare;
+    // get array for current yen
+    const yenMap = constants.yestareMap[yen - 1];
+    // find period of yen for given loa, and get yestare for first range
+    let yestareMap = -1;
+    let exit = false;
+    let i = 0;
+    let loaMap;
+    while (i < yenMap.length && !exit) {
+      loaMap = yenMap[i];
+      if ((loaMap.begins <= loa) && (loa <= loaMap.ends)) {
+        yestareMap = loaMap.yestareMarchDay;
+        exit = true;
+      }
+      i += 1;
+    }
+    // calculate appropriate yestare
+    const mod = loa % 12;
+    if (mod === 0) {
+      yestare = yestareMap;
+    } else if (mod <= 3) {
+      yestare = yestareMap + 3;
+    } else if (mod <= 7) {
+      yestare = yestareMap + 2;
+    } else {
+      yestare = yestareMap + 1;
+    }
+    return yestare;
+  },
+  calculateYestareDayOfWeek(yen, loa) {
+    const offsetRegular = -1;
+    const offsetLeap = 2;
+    const firstYestareDayOfWeek = constants.firstYestareDayOfWeek;
+
+    const totalLoar = (yen * 144) + (loa - 1);
+    const totalLeapLoar = Math.floor(totalLoar / 12);
+    const totalRegularLoar = totalLoar - totalLeapLoar;
+
+    const offsetFromLeap = offsetLeap * totalLeapLoar;
+    const offsetFromRegular = offsetRegular * totalRegularLoar;
+    const totalOffsetDays = offsetFromLeap + offsetFromRegular;
+    const totalOffsetWeekDays = totalOffsetDays % 6;
+
+    let yestareDayOfWeek = (firstYestareDayOfWeek - 1) + totalOffsetWeekDays;
+    if (yestareDayOfWeek >= 0) {
+      yestareDayOfWeek %= 6;
+    } else {
+      yestareDayOfWeek = (6 - ((-yestareDayOfWeek) % 6));
+    }
+    yestareDayOfWeek += 1;
+
+    return yestareDayOfWeek;
+  },
+  calculateDayOfLoa(yen, loa, period, dayOfPeriod) {
+    const isLeapLoa = this.isLeapLoa(loa);
+    const periods = constants.periods;
+    let daysOfLoa = 0;
+    periods.forEach((periodInfo) => {
+      daysOfLoa += isLeapLoa ? periodInfo.length.leap : periodInfo.length.standard;
+    });
+    daysOfLoa += dayOfPeriod;
+    return daysOfLoa;
+  },
+  calculateWeek(yen, loa, dayOfLoa) {
+    const weekDayOfYestare = this.calculateYestareDayOfWeek(yen, loa);
+    const dayOfWeek = this.calculateDayOfWeek(yen, loa, dayOfLoa);
+    const week = Math.floor((dayOfLoa + (6 - dayOfWeek) + (weekDayOfYestare - 1)) / 6);
+    return week;
+  },
+  calculateDayOfWeek(yen, loa, dayOfLoa) {
+    const weekDayOfYestare = this.calculateYestareDayOfWeek(yen, loa);
+    const dayOfWeek = (((weekDayOfYestare + (dayOfLoa - 1)) - 1) % 6) + 1;
+    return dayOfWeek;
   },
 };
 

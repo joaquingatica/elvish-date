@@ -1,9 +1,9 @@
 const utils = {
-  getRomanNumeral(num) {
-    if (!+num) {
+  getRomanFromNumber(number) {
+    if (!+number) {
       return NaN;
     }
-    const digits = String(+num).split('');
+    const digits = String(+number).split('');
     const key = ['', 'C', 'CC', 'CCC', 'CD', 'D', 'DC', 'DCC', 'DCCC', 'CM',
       '', 'X', 'XX', 'XXX', 'XL', 'L', 'LX', 'LXX', 'LXXX', 'XC',
       '', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
@@ -14,6 +14,30 @@ const utils = {
       roman = (key[+digits.pop() + (i * 10)] || '') + roman;
     }
     return Array(+digits.join('') + 1).join('M') + roman;
+  },
+  getIntFromRomanNumeral(roman) {
+    const string = roman.toUpperCase();
+    const validator = /^M*(?:D?C{0,3}|C[MD])(?:L?X{0,3}|X[CL])(?:V?I{0,3}|I[XV])$/;
+    const token = /[MDLV]|C[MD]?|X[CL]?|I[XV]?/g;
+    /* eslint-disable object-property-newline */
+    const key = {
+      M: 1000, CM: 900, D: 500, CD: 400, C: 100, XC: 90,
+      L: 50, XL: 40, X: 10, IX: 9, V: 5, IV: 4, I: 1,
+    };
+    /* eslint-enable object-property-newline */
+    let num = 0;
+    if (!(string && validator.test(string))) {
+      return false;
+    }
+    let m = token.exec(string);
+    while (m) {
+      num += key[m[0]];
+      m = token.exec(string);
+    }
+    return num;
+  },
+  getDaysBetweenDates(date1, date2) {
+    return Math.floor((date1 - date2) / (1000 * 60 * 60 * 24));
   },
 };
 

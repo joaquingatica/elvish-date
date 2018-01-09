@@ -12,7 +12,7 @@ export default {
   elvishEquals(date1, date2) {
     this.dateEquals(date2, date2.yen, date2.loa, date2.period, date2.day);
   },
-  gregorianEquals(date1, date2) {
+  dateEquals(date1, date2) {
     assert.equal(date1.toString(), date2.toString());
   },
 };

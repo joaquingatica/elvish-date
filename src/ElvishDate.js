@@ -1,8 +1,10 @@
 import calendar from './helpers/calendar';
+import convert from './helpers/converter';
+import constants from './helpers/constants';
+
+// TODO validate and throw exceptions on set... methods
 
 class ElvishDate {
-
-  // Public API
 
   /**
    * constructor()
@@ -16,17 +18,17 @@ class ElvishDate {
   constructor(...args) {
     this.initializeAttributes();
     if (args.length <= 0) {
-      this.setGregorianDate(new Date());
+      this.convertFromDate(new Date());
     } else {
       const firstArg = args[0];
       if (firstArg instanceof Date) {
-        this.setGregorianDate(firstArg);
+        this.convertFromDate(firstArg);
       } else if (firstArg instanceof ElvishDate) {
         this.copyElvishDate(firstArg);
       } else if (typeof firstArg === 'object') {
         this.setAttributes(firstArg);
       } else {
-        const attributes = this.parseConstructorArguments(...args);
+        const attributes = ElvishDate.parseConstructorArguments(...args);
         this.setAttributes(attributes);
       }
     }
@@ -66,6 +68,7 @@ class ElvishDate {
    * @returns {number}
    */
   static now() {
+    return ElvishDate.fromDate(new Date()).getTime();
   }
 
   /**
@@ -104,6 +107,17 @@ class ElvishDate {
     return calendar.getPeriodName(this.period);
   }
   /**
+   * Return the number of Day of the Loa (1-based index) for the specified date
+   * @returns {number}
+   */
+  getDayOfLoa() {
+    const yen = this.getYen();
+    const loa = this.getLoa();
+    const period = this.getPeriod();
+    const dayOfPeriod = this.getDayOfPeriod();
+    return calendar.calculateDayOfLoa(yen, loa, period, dayOfPeriod);
+  }
+  /**
    * Return the number of Day of the Period (1-based index, upper limit depends on Period)
    * for the specified date
    * @returns {number}
@@ -116,7 +130,10 @@ class ElvishDate {
    * @returns {number}
    */
   getDayOfWeek() {
-    return calendar.getDayOfWeek(this);
+    const yen = this.getYen();
+    const loa = this.getLoa();
+    const dayOfLoa = calendar.calculateDayOfLoa(yen, loa, this.getPeriod(), this.getDayOfPeriod());
+    return calendar.calculateDayOfWeek(yen, loa, dayOfLoa);
   }
   /**
    * Return the name of the Day of the Week for the specified date
@@ -161,7 +178,8 @@ class ElvishDate {
    * @returns {number}
    */
   getTime() {
-    return calendar.getTime(this);
+    // TODO Extend to use elvish milliseconds, not regular
+    return convert.getAsDate(this).getTime();
   }
 
   /**
@@ -169,21 +187,21 @@ class ElvishDate {
    * @param {number} yen
    */
   setYen(yen) {
-    calendar.setYen(this, yen);
+    this.yen = yen;
   }
   /**
    * Sets the Loa value (1-144) for a specified date
    * @param {number} loa
    */
   setLoa(loa) {
-    calendar.setLoa(this, loa);
+    this.loa = loa;
   }
   /**
    * Sets the Period value (0-8) for a specified date
    * @param {number} period
    */
   setPeriod(period) {
-    calendar.setPeriod(this, period);
+    this.period = period;
   }
   /**
    * Sets the Day of Period value (1-based index, upper limit depends on Period)
@@ -191,35 +209,35 @@ class ElvishDate {
    * @param {number} dayOfPeriod
    */
   setDayOfPeriod(dayOfPeriod) {
-    calendar.setDayOfPeriod(this, dayOfPeriod);
+    this.dayOfPeriod = dayOfPeriod;
   }
   /**
    * Sets the Hour value for a specified date
    * @param {number} hours
    */
   setHours(hours) {
-    calendar.setHours(this, hours);
+    this.hour = hours;
   }
   /**
    * Sets the Minute value for a specified date
    * @param {number} minutes
    */
   setMinutes(minutes) {
-    calendar.setMinutes(this, minutes);
+    this.minute = minutes;
   }
   /**
    * Sets the Second value for a specified date
    * @param {number} seconds
    */
   setSeconds(seconds) {
-    calendar.setSeconds(this, seconds);
+    this.second = seconds;
   }
   /**
    * Sets the Millisecond value for a specified date
    * @param {number} milliseconds
    */
   setMilliseconds(milliseconds) {
-    calendar.setMilliseconds(this, milliseconds);
+    this.millisecond = milliseconds;
   }
   /**
    * Sets the time in number of milliseconds since Yestarë, I 1, 00:00:00 (>= 0)
@@ -227,7 +245,10 @@ class ElvishDate {
    * @returns {number}
    */
   setTime(time) {
-    calendar.setTime(this, time);
+    // TODO Extend to use elvish milliseconds, not regular
+    const date = new Date(time);
+    const elvishDate = convert.getFromDate(date);
+    this.copyElvishDate(elvishDate);
   }
 
   /**
@@ -235,16 +256,32 @@ class ElvishDate {
    * @returns {string}
    */
   toString() {
-    return calendar.toString(this);
+    const period = this.getPeriod();
+    const dayOfWeek = this.getDayOfWeek();
+    const periodName = this.getPeriodName();
+    const yenNumeral = this.getYenNumeral();
+    const loa = this.getLoa();
+    let string = `${dayOfWeek}, ${periodName}`;
+    if (!calendar.isPeriodSingleDay(period)) {
+      const dayOfPeriod = this.getDayOfPeriod();
+      string += ` ${dayOfPeriod}`;
+    }
+    string += `, ${yenNumeral} ${loa}`;
+    return string;
+  }
+
+  /**
+   * Get current ElvishDate as Date
+   * @returns {Date}
+   */
+  toDate() {
+    return convert.getAsDate(this);
   }
 
   // Internal Methods
 
-  static getAttributeNames() {
-    return calendar.attributes;
-  }
-  parseConstructorArguments(...args) {
-    const keys = this.getAttributeNames();
+  static parseConstructorArguments(...args) {
+    const keys = constants.attributes;
     const values = {};
     if (args && args.length > 0) {
       args.forEach((value, i) => {
@@ -254,14 +291,16 @@ class ElvishDate {
     return values;
   }
   initializeAttributes() {
-    this.yen = null;
-    this.loa = null;
-    this.period = null;
-    this.day = null;
-    this.hour = null;
-    this.minute = null;
-    this.second = null;
-    this.millisecond = null;
+    this.setAttributes({
+      yen: null,
+      loa: null,
+      period: null,
+      day: null,
+      hour: null,
+      minute: null,
+      second: null,
+      millisecond: null,
+    });
   }
   setAttributes(attributes) {
     this.setYen(attributes.yen);
@@ -276,8 +315,9 @@ class ElvishDate {
   copyElvishDate(date) {
     this.setAttributes(date);
   }
-  setGregorianDate(date) {
-    this.gregorian = date;
+  convertFromDate(date) {
+    const elvish = convert.getFromDate(date);
+    this.copyElvishDate(elvish);
   }
 }
 

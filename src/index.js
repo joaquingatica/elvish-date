@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import ElvishDate from './ElvishDate';
 
 // TODO Sunset

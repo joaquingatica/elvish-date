@@ -4,7 +4,7 @@
 **Kind**: global class  
 
 * [ElvishDate](#ElvishDate)
-    * [new ElvishDate(...args)](#new_ElvishDate_new)
+    * [new ElvishDate([...args])](#new_ElvishDate_new)
     * _instance_
         * [.getYen()](#ElvishDate+getYen) ⇒ <code>number</code>
         * [.getYenNumeral()](#ElvishDate+getYenNumeral) ⇒ <code>string</code>
@@ -25,23 +25,22 @@
         * [.toDate()](#ElvishDate+toDate) ⇒ <code>Date</code>
     * _static_
         * [.length](#ElvishDate.length) ⇒ <code>number</code>
-        * [.fromDate(...args)](#ElvishDate.fromDate) ⇒ [<code>ElvishDate</code>](#ElvishDate)
+        * [.fromDate([...args])](#ElvishDate.fromDate) ⇒ [<code>ElvishDate</code>](#ElvishDate)
         * [.now()](#ElvishDate.now) ⇒ <code>number</code>
 
 <a name="new_ElvishDate_new"></a>
 
-### new ElvishDate(...args)
-constructor()
-constructor(Date)
-constructor(ElvishDate)
-constructor(attributes)
-constructor(yen, loa, period[, day])
-TODO constructor(yen, loa, period[, day[, hour[, minute[, second[, millisecond]]]]])
+### new ElvishDate([...args])
+constructor()<br />
+constructor(Date)<br />
+constructor(ElvishDate)<br />
+constructor(attributes)<br />
+constructor(yen, loa, period[, day])<br />
 
 
-| Param |
-| --- |
-| ...args | 
+| Param | Type |
+| --- | --- |
+| [...args] | <code>Date</code> \| [<code>ElvishDate</code>](#ElvishDate) \| <code>Object</code> \| <code>number</code> | 
 
 <a name="ElvishDate+getYen"></a>
 
@@ -177,19 +176,19 @@ Number of arguments handled by constructor
 **Kind**: static property of [<code>ElvishDate</code>](#ElvishDate)  
 <a name="ElvishDate.fromDate"></a>
 
-### ElvishDate.fromDate(...args) ⇒ [<code>ElvishDate</code>](#ElvishDate)
-Accepts same arguments as the standard Date constructor, or accepts a Date instance
-fromDate()
-fromDate(int)
-fromDate(dateString)
-fromDate(year, month[, day[, hours[, minutes[, seconds[, milliseconds]]]]])
+### ElvishDate.fromDate([...args]) ⇒ [<code>ElvishDate</code>](#ElvishDate)
+Accepts same arguments as the standard Date constructor, or accepts a Date instance<br />
+fromDate()<br />
+fromDate(int)<br />
+fromDate(dateString)<br />
+fromDate(year, month[, day[, hours[, minutes[, seconds[, milliseconds]]]]])<br />
 fromDate(Date)
 
 **Kind**: static method of [<code>ElvishDate</code>](#ElvishDate)  
 
-| Param |
-| --- |
-| ...args | 
+| Param | Type |
+| --- | --- |
+| [...args] | <code>number</code> \| <code>string</code> \| <code>Object</code> | 
 
 <a name="ElvishDate.now"></a>
 

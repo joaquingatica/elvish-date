@@ -14,7 +14,7 @@ class ElvishDate {
    * constructor(attributes)<br />
    * constructor(yen, loa, period[, day])<br />
    *
-   * @param args
+   * @param {Date|ElvishDate|Object|number} [args]
    */
   constructor(...args) {
     this.initializeAttributes();
@@ -51,7 +51,7 @@ class ElvishDate {
    * fromDate(year, month[, day[, hours[, minutes[, seconds[, milliseconds]]]]])<br />
    * fromDate(Date)
    *
-   * @param args
+   * @param {number|string|Object} [args]
    * @returns {ElvishDate}
    */
   static fromDate(...args) {

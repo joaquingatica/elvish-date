@@ -2,25 +2,26 @@ import assert from 'assert';
 import ElvishDate from '../../src/ElvishDate';
 
 describe('From Date', function () {
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
   describe('fromDate()', function () {
     it('should be created for current Date', function () {
-      assert.equal(ElvishDate.fromDate().toDate().toString(), new Date().toString());
+      assert.equal(ElvishDate.fromDate().toDate().toString(), today.toString());
     });
   });
   describe('fromDate(int)', function () {
     it('should be created for provided timestamp', function () {
-      const date = new Date();
-      assert.equal(ElvishDate.fromDate(date.getTime()).toDate().toString(), date.toString());
+      assert.equal(ElvishDate.fromDate(today.getTime()).toDate().toString(), today.toString());
     });
   });
   describe('fromDate(dateString)', function () {
     it('should be created for provided date string', function () {
-      const dateString = new Date().toString();
+      const dateString = today.toString();
       assert.equal(ElvishDate.fromDate(dateString).toDate().toString(), dateString);
     });
   });
   describe('fromDate(year, month[, day[, hours[, minutes[, seconds[, milliseconds]]]]])', function () {
-    const dateTmp = new Date();
+    const dateTmp = today; // new Date();
     const year = dateTmp.getFullYear();
     const month = dateTmp.getMonth();
     const day = dateTmp.getUTCDate();
@@ -62,7 +63,7 @@ describe('From Date', function () {
   });
   describe('fromDate(Date)', function () {
     it('should be created for provided Date', function () {
-      const date = new Date();
+      const date = today;
       assert.equal(ElvishDate.fromDate(date).toDate().toString(), date.toString());
     });
   });

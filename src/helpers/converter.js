@@ -76,10 +76,6 @@ const converter = {
     const seconds = date.getSeconds();
     const milliseconds = date.getMilliseconds();
     */
-    console.log(`yen ${yen}`);
-    console.log(`loa ${loa}`);
-    console.log(`period ${period}`);
-    console.log(`dayOfPeriod ${dayOfPeriod}`);
 
     return new ElvishDate(yen, loa, period, dayOfPeriod);
   },

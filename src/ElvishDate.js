@@ -36,11 +36,11 @@ class ElvishDate {
   }
 
   /**
-   * Number of arguments handled by constructor
+   * Number of arguments handled by constructor (4)
    * @returns {number}
    */
   static get length() {
-    return 8;
+    return 4;
   }
 
   /**

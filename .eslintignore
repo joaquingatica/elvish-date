@@ -1,3 +1,5 @@
 /node_modules/**
+/dist/**
 /lib/**
 /lib-test/**
+webpack.config.js

@@ -5,14 +5,15 @@
   "main": "lib/index.js",
   "scripts": {
     "build:test": "babel test -d lib-test --copy-files",
-    "test": "yarn run build:test && mocha lib-test --require babel-core/register",
-    "watch": "yarn run build --watch",
-    "prepublish": "yarn run build",
-    "build": "babel src -d lib --copy-files",
+    "start:test": "mocha lib-test --require babel-core/register",
+    "test": "yarn run build:test && yarn run start:test",
+    "dist": "webpack",
+    "prepublish": "babel src -d lib --copy-files",
+    "build": "yarn run dist && yarn run prepublish",
+    "start": "yarn run build && node lib",
     "lint": "eslint src test",
     "docs": "jsdoc -d docs src",
-    "docs:md": "jsdoc2md src/ElvishDate.js > DOCS.md",
-    "start": "yarn run build && node lib"
+    "docs:md": "jsdoc2md src/ElvishDate.js > DOCS.md"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   },
   "keywords": [
     "elvish",
+    "date",
     "calendar",
     "imladris"
   ],
@@ -27,6 +29,7 @@
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "eslint": "^3.17.1",
     "eslint-config-airbnb": "^14.1.0",
@@ -35,7 +38,8 @@
     "eslint-plugin-react": "^6.10.0",
     "jsdoc": "^3.5.5",
     "jsdoc-to-markdown": "^3.0.4",
-    "mocha": "^4.0.1"
+    "mocha": "^4.0.1",
+    "webpack": "^3.10.0"
   },
   "dependencies": {}
 }

@@ -1,5 +1,5 @@
 {
-  "name": "elvish-date",
+  "name": "elvish-calendar",
   "version": "1.0.0-beta.1",
   "description": "Elvish Calendar conversion of dates and utilities",
   "main": "lib/index.js",

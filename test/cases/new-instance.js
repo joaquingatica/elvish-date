@@ -41,9 +41,10 @@ describe('New Instance', function () {
   });
   describe('constructor(Date)', function () {
     it('should be created for provided Date', function () {
-      const date = new Date();
-      const elvishDate = new ElvishDate(date);
-      utils.dateEquals(elvishDate.toDate().toString(), date);
+      const now = new Date();
+      const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const elvishDate = new ElvishDate(today);
+      utils.dateEquals(elvishDate.toDate().toString(), today);
     });
   });
 });

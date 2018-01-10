@@ -37,9 +37,25 @@ const utils = {
     return num;
   },
   getDaysBetweenDates(date1, date2) {
-    const dateFirst = new Date(date1.getFullYear(), date1.getMonth(), date1.getDate());
-    const dateSecond = new Date(date2.getFullYear(), date2.getMonth(), date2.getDate());
-    return Math.abs(Math.floor((dateFirst - dateSecond) / (1000 * 60 * 60 * 24)));
+    let dateStart = new Date(date1.getFullYear(), date1.getMonth(), date1.getDate());
+    let dateEnd = new Date(date2.getFullYear(), date2.getMonth(), date2.getDate());
+
+    if (dateStart > dateEnd) {
+      const tmp = dateStart;
+      dateStart = dateEnd;
+      dateEnd = tmp;
+    }
+
+    let daysBetween = 1;
+    while (dateStart.getTime() < dateEnd.getTime()) {
+      daysBetween += 1;
+
+      const dateTmp = new Date(dateStart);
+      dateTmp.setDate(dateTmp.getDate() + 1);
+
+      dateStart = dateTmp;
+    }
+    return daysBetween;
   },
 };
 

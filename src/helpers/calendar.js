@@ -110,9 +110,10 @@ const calendar = {
     const isLeapLoa = this.isLeapLoa(loa);
     const periods = constants.periods;
     let daysOfLoa = 0;
-    periods.forEach((periodInfo) => {
+    for (let i = 0; i < period; i += 1) {
+      const periodInfo = periods[i];
       daysOfLoa += isLeapLoa ? periodInfo.length.leap : periodInfo.length.standard;
-    });
+    }
     daysOfLoa += dayOfPeriod;
     return daysOfLoa;
   },

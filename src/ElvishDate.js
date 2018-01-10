@@ -6,13 +6,13 @@ import constants from './helpers/constants';
 
 class ElvishDate {
 
+  // TODO constructor(yen, loa, period[, day[, hour[, minute[, second[, millisecond]]]]])
   /**
-   * constructor()
-   * constructor(Date)
-   * constructor(ElvishDate)
-   * constructor(attributes)
-   * constructor(yen, loa, period[, day])
-   * TODO constructor(yen, loa, period[, day[, hour[, minute[, second[, millisecond]]]]])
+   * constructor()<br />
+   * constructor(Date)<br />
+   * constructor(ElvishDate)<br />
+   * constructor(attributes)<br />
+   * constructor(yen, loa, period[, day])<br />
    *
    * @param args
    */
@@ -44,11 +44,11 @@ class ElvishDate {
   }
 
   /**
-   * Accepts same arguments as the standard Date constructor, or accepts a Date instance
-   * fromDate()
-   * fromDate(int)
-   * fromDate(dateString)
-   * fromDate(year, month[, day[, hours[, minutes[, seconds[, milliseconds]]]]])
+   * Accepts same arguments as the standard Date constructor, or accepts a Date instance<br />
+   * fromDate()<br />
+   * fromDate(int)<br />
+   * fromDate(dateString)<br />
+   * fromDate(year, month[, day[, hours[, minutes[, seconds[, milliseconds]]]]])<br />
    * fromDate(Date)
    *
    * @param args

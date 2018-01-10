@@ -1,5 +1,5 @@
 {
-  "name": "elvish-calendar",
+  "name": "elvish-date",
   "version": "1.0.0-beta.1",
   "description": "Elvish Calendar conversion of dates and utilities",
   "main": "lib/index.js",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/joaquingatica/elvish-calendar-npm"
+    "url": "https://github.com/joaquingatica/elvish-date"
   },
   "keywords": [
     "elvish",
@@ -34,9 +34,5 @@
     "eslint-plugin-react": "^6.10.0",
     "mocha": "^4.0.1"
   },
-  "dependencies": {
-    "babel-polyfill": "^6.26.0",
-    "moment": "^2.17.1",
-    "moment-timezone": "^0.5.11"
-  }
+  "dependencies": {}
 }

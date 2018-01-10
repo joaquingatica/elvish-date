@@ -7,17 +7,17 @@ function yestareDay(loaBegins, loaEnds, dayOfMarch) {
 }
 
 const constants = {
-  attributes: ['yen', 'loa', 'period', 'day', 'hour', 'minute', 'second', 'millisecond'],
+  attributes: ['yen', 'loa', 'period', 'day'/* , 'hour', 'minute', 'second', 'millisecond' */],
   attributeNames: {
     // specifiers
     yen: 'Yen',
     loa: 'Loa',
     period: 'Period of Loa',
     day: 'Day of Period',
-    hour: 'Hour',
+    /* hour: 'Hour',
     minute: 'Minute',
     second: 'Second',
-    millisecond: 'Millisecond',
+    millisecond: 'Millisecond', */
 
     // derived
     dayOfLoa: 'Day of Loa',

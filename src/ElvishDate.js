@@ -11,7 +11,8 @@ class ElvishDate {
    * constructor(Date)
    * constructor(ElvishDate)
    * constructor(attributes)
-   * constructor(yen, loa, period[, day[, hour[, minute[, second[, millisecond]]]]])
+   * constructor(yen, loa, period[, day])
+   * TODO constructor(yen, loa, period[, day[, hour[, minute[, second[, millisecond]]]]])
    *
    * @param args
    */
@@ -147,30 +148,30 @@ class ElvishDate {
    * for the specified date
    * @returns {number}
    */
-  getHours() {
+  /* getHours() {
     return this.hour;
-  }
+  } */
   /**
    * Return the number of the Minute for the specified date
    * @returns {number}
    */
-  getMinutes() {
+  /* getMinutes() {
     return this.minute;
-  }
+  } */
   /**
    * Return the number of the Second for the specified date
    * @returns {number}
    */
-  getSeconds() {
+  /* getSeconds() {
     return this.second;
-  }
+  } */
   /**
    * Return the number of the Millisecond for the specified date
    * @returns {number}
    */
-  getMilliseconds() {
+  /* getMilliseconds() {
     return this.millisecond;
-  }
+  } */
 
   /**
    * Returns the numeric value of the specified date as the number of milliseconds
@@ -215,30 +216,30 @@ class ElvishDate {
    * Sets the Hour value for a specified date
    * @param {number} hours
    */
-  setHours(hours) {
+  /* setHours(hours) {
     this.hour = hours;
-  }
+  } */
   /**
    * Sets the Minute value for a specified date
    * @param {number} minutes
    */
-  setMinutes(minutes) {
+  /* setMinutes(minutes) {
     this.minute = minutes;
-  }
+  } */
   /**
    * Sets the Second value for a specified date
    * @param {number} seconds
    */
-  setSeconds(seconds) {
+   /* setSeconds(seconds) {
     this.second = seconds;
-  }
+  } */
   /**
    * Sets the Millisecond value for a specified date
    * @param {number} milliseconds
    */
-  setMilliseconds(milliseconds) {
+  /* setMilliseconds(milliseconds) {
     this.millisecond = milliseconds;
-  }
+  } */
   /**
    * Sets the time in number of milliseconds since Yestarë, I 1, 00:00:00 (>= 0)
    * for a specified date.
@@ -296,10 +297,10 @@ class ElvishDate {
       loa: null,
       period: null,
       day: null,
-      hour: null,
+      /* hour: null,
       minute: null,
       second: null,
-      millisecond: null,
+      millisecond: null, */
     });
   }
   setAttributes(attributes) {
@@ -307,10 +308,22 @@ class ElvishDate {
     this.setLoa(attributes.loa);
     this.setPeriod(attributes.period);
     this.setDayOfPeriod(attributes.day);
-    this.setHours(attributes.hour);
+    /* this.setHours(attributes.hour);
     this.setMinutes(attributes.minute);
     this.setSeconds(attributes.second);
-    this.setMilliseconds(attributes.millisecond);
+    this.setMilliseconds(attributes.millisecond); */
+  }
+  getAttributes() {
+    return {
+      yen: this.getYen(),
+      loa: this.getLoa(),
+      period: this.getPeriod(),
+      day: this.getDayOfPeriod(),
+      /* hour: this.getHours(),
+      minute: this.getMinutes(),
+      second: this.getSeconds(),
+      millisecond: this.getMilliseconds(), */
+    };
   }
   copyElvishDate(date) {
     this.setAttributes(date);

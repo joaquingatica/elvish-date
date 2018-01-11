@@ -39,23 +39,28 @@ class ElvishDate {
 
   /**
    * Number of arguments handled by constructor (4)
-   * @returns {number}
+   * @type {number}
    */
   static get length() {
     return 4;
   }
 
   /**
-   * Constants for periods
-   * @returns {{YESTARE, TUILE, LAIRE, YAVIE, ENDERI, QUELLE, HRIVE, COIRE, METTARE}}
+   * Constants for periods<br />
+   * {YESTARE: 0, TUILE: 1, LAIRE: 2, YAVIE: 3, ENDERI: 4,
+   * QUELLE: 5, HRIVE: 6, COIRE: 7, METTARE: 8}
+   * @type {{YESTARE: number, TUILE: number, LAIRE: number, YAVIE: number,
+   * ENDERI: number, QUELLE: number, HRIVE: number, COIRE: number, METTARE: number}}
    */
   static get periods() {
     return definitions.periods;
   }
 
   /**
-   * Constants for days of week
-   * @returns {{ELENYA, ANARYA, ISILYA, ALDUYA, MENELYA, VALANYA}}
+   * Constants for days of week<br />
+   * {ELENYA: 0, ANARYA: 1, ISILYA: 2, ALDUYA: 3, MENELYA: 4, VALANYA: 5}
+   * @type {{ELENYA: number, ANARYA: number, ISILYA: number,
+   * ALDUYA: number, MENELYA: number, VALANYA: number}}
    */
   static get daysOfWeek() {
     return definitions.daysOfWeek;

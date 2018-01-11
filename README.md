@@ -40,9 +40,9 @@ Find the JSDoc documentation [here](https://joaquingatica.github.io/elvish-date/
         * [.toString()](#ElvishDate+toString) ⇒ <code>string</code>
         * [.toDate()](#ElvishDate+toDate) ⇒ <code>Date</code>
     * _static_
-        * [.length](#ElvishDate.length) ⇒ <code>number</code>
-        * [.periods](#ElvishDate.periods) ⇒ <code>Object</code>
-        * [.daysOfWeek](#ElvishDate.daysOfWeek) ⇒ <code>Object</code>
+        * [.length](#ElvishDate.length) : <code>number</code>
+        * [.periods](#ElvishDate.periods) : <code>Object</code>
+        * [.daysOfWeek](#ElvishDate.daysOfWeek) : <code>Object</code>
         * [.yen(romanNumeral)](#ElvishDate.yen) ⇒ <code>number</code>
         * [.fromDate([...args])](#ElvishDate.fromDate) ⇒ [<code>ElvishDate</code>](#ElvishDate)
         * [.now()](#ElvishDate.now) ⇒ <code>number</code>
@@ -189,20 +189,23 @@ Get current ElvishDate as Date
 **Kind**: instance method of [<code>ElvishDate</code>](#ElvishDate)  
 <a name="ElvishDate.length"></a>
 
-### ElvishDate.length ⇒ <code>number</code>
+### ElvishDate.length : <code>number</code>
 Number of arguments handled by constructor (4)
 
 **Kind**: static property of [<code>ElvishDate</code>](#ElvishDate)  
 <a name="ElvishDate.periods"></a>
 
-### ElvishDate.periods ⇒ <code>Object</code>
-Constants for periods
+### ElvishDate.periods : <code>Object</code>
+Constants for periods<br />
+{YESTARE: 0, TUILE: 1, LAIRE: 2, YAVIE: 3, ENDERI: 4,
+QUELLE: 5, HRIVE: 6, COIRE: 7, METTARE: 8}
 
 **Kind**: static property of [<code>ElvishDate</code>](#ElvishDate)  
 <a name="ElvishDate.daysOfWeek"></a>
 
-### ElvishDate.daysOfWeek ⇒ <code>Object</code>
-Constants for days of week
+### ElvishDate.daysOfWeek : <code>Object</code>
+Constants for days of week<br />
+{ELENYA: 0, ANARYA: 1, ISILYA: 2, ALDUYA: 3, MENELYA: 4, VALANYA: 5}
 
 **Kind**: static property of [<code>ElvishDate</code>](#ElvishDate)  
 <a name="ElvishDate.yen"></a>

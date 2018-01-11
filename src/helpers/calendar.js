@@ -119,7 +119,7 @@ const calendar = {
   },
   calculateDayOfWeek(yen, loa, dayOfLoa) {
     const weekDayOfYestare = this.calculateYestareDayOfWeek(yen, loa);
-    const dayOfWeek = ((weekDayOfYestare + (dayOfLoa - 1)) - 1) % 6 + 1;
+    const dayOfWeek = (((weekDayOfYestare + (dayOfLoa - 1)) - 1) % 6) + 1;
     return dayOfWeek;
   },
 };

@@ -4,6 +4,10 @@ This npm module `elvish-date` includes the `ElvishDate` class that mimics the st
 
 NPM module for Elvish Calendar conversion of dates and utilities
 
+## Elvish Calendar
+
+For information on the Elvish Calendar (Reckoning of Imladris), visit Quenya101: https://quenya101.com/calendar/
+
 ---
 
 # Documentation

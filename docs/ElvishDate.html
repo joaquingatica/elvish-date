@@ -40,7 +40,7 @@
 
     
 
-    <h4 class="name" id="ElvishDate"><span class="type-signature"></span>new ElvishDate<span class="signature">(&hellip;args)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="ElvishDate"><span class="type-signature"></span>new ElvishDate<span class="signature">(&hellip;args<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -94,10 +94,26 @@ constructor(yen, loa, period[, day])<br />
 
             <td class="type">
             
+                
+<span class="param-type">Date</span>
+|
+
+<span class="param-type"><a href="ElvishDate.html">ElvishDate</a></span>
+|
+
+<span class="param-type">Object</span>
+|
+
+<span class="param-type">number</span>
+
+
+            
             </td>
 
             
                 <td class="attributes">
+                
+                    &lt;optional><br>
                 
 
                 
@@ -151,7 +167,7 @@ constructor(yen, loa, period[, day])<br />
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line19">line 19</a>
+        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line21">line 21</a>
     </li></ul></dd>
     
 
@@ -195,13 +211,13 @@ constructor(yen, loa, period[, day])<br />
 
         
             
-<h4 class="name" id=".length"><span class="type-signature">(static) </span>length<span class="type-signature"></span></h4>
+<h4 class="name" id=".daysOfWeek"><span class="type-signature">(static) </span>daysOfWeek<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    Number of arguments handled by constructor
+    Constants for days of week
 </div>
 
 
@@ -239,7 +255,131 @@ constructor(yen, loa, period[, day])<br />
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line42">line 42</a>
+        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line60">line 60</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".length"><span class="type-signature">(static) </span>length<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Number of arguments handled by constructor (4)
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line44">line 44</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".periods"><span class="type-signature">(static) </span>periods<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Constants for periods
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line52">line 52</a>
     </li></ul></dd>
     
 
@@ -266,18 +406,18 @@ constructor(yen, loa, period[, day])<br />
 
     
 
-    <h4 class="name" id=".fromDate"><span class="type-signature">(static) </span>fromDate<span class="signature">(&hellip;args)</span><span class="type-signature"> &rarr; {<a href="ElvishDate.html">ElvishDate</a>}</span></h4>
+    <h4 class="name" id=".fromDate"><span class="type-signature">(static) </span>fromDate<span class="signature">(&hellip;args<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="ElvishDate.html">ElvishDate</a>}</span></h4>
 
     
 
 
 
 <div class="description">
-    Accepts same arguments as the standard Date constructor, or accepts a Date instance
-fromDate()
-fromDate(int)
-fromDate(dateString)
-fromDate(year, month[, day[, hours[, minutes[, seconds[, milliseconds]]]]])
+    Accepts same arguments as the standard Date constructor, or accepts a Date instance<br />
+fromDate()<br />
+fromDate(int)<br />
+fromDate(dateString)<br />
+fromDate(year, month[, day[, hours[, minutes[, seconds[, milliseconds]]]]])<br />
 fromDate(Date)
 </div>
 
@@ -321,10 +461,23 @@ fromDate(Date)
 
             <td class="type">
             
+                
+<span class="param-type">number</span>
+|
+
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Object</span>
+
+
+            
             </td>
 
             
                 <td class="attributes">
+                
+                    &lt;optional><br>
                 
 
                 
@@ -378,7 +531,7 @@ fromDate(Date)
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line57">line 57</a>
+        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line84">line 84</a>
     </li></ul></dd>
     
 
@@ -478,7 +631,156 @@ fromDate(Date)
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line71">line 71</a>
+        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line98">line 98</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".yen"><span class="type-signature">(static) </span>yen<span class="signature">(romanNumeral)</span><span class="type-signature"> &rarr; {number}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Helper for getting number for Roman Numeral of Yen
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>romanNumeral</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line69">line 69</a>
     </li></ul></dd>
     
 
@@ -578,7 +880,7 @@ fromDate(Date)
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line114">line 114</a>
+        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line141">line 141</a>
     </li></ul></dd>
     
 
@@ -679,7 +981,7 @@ for the specified date
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line126">line 126</a>
+        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line153">line 153</a>
     </li></ul></dd>
     
 
@@ -779,7 +1081,7 @@ for the specified date
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line133">line 133</a>
+        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line160">line 160</a>
     </li></ul></dd>
     
 
@@ -879,7 +1181,7 @@ for the specified date
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line143">line 143</a>
+        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line170">line 170</a>
     </li></ul></dd>
     
 
@@ -979,7 +1281,7 @@ for the specified date
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line93">line 93</a>
+        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line120">line 120</a>
     </li></ul></dd>
     
 
@@ -1079,7 +1381,7 @@ for the specified date
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line100">line 100</a>
+        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line127">line 127</a>
     </li></ul></dd>
     
 
@@ -1179,7 +1481,7 @@ for the specified date
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line107">line 107</a>
+        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line134">line 134</a>
     </li></ul></dd>
     
 
@@ -1280,7 +1582,7 @@ since Yestarë, I 1, 00:00:00 (not supported for prior times).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line181">line 181</a>
+        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line208">line 208</a>
     </li></ul></dd>
     
 
@@ -1380,7 +1682,7 @@ since Yestarë, I 1, 00:00:00 (not supported for prior times).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line79">line 79</a>
+        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line106">line 106</a>
     </li></ul></dd>
     
 
@@ -1480,7 +1782,7 @@ since Yestarë, I 1, 00:00:00 (not supported for prior times).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line86">line 86</a>
+        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line113">line 113</a>
     </li></ul></dd>
     
 
@@ -1630,7 +1932,7 @@ for a specified date
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line212">line 212</a>
+        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line239">line 239</a>
     </li></ul></dd>
     
 
@@ -1761,7 +2063,7 @@ for a specified date
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line197">line 197</a>
+        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line224">line 224</a>
     </li></ul></dd>
     
 
@@ -1892,7 +2194,7 @@ for a specified date
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line204">line 204</a>
+        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line231">line 231</a>
     </li></ul></dd>
     
 
@@ -1975,7 +2277,7 @@ for a specified date.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line248">line 248</a>
+        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line275">line 275</a>
     </li></ul></dd>
     
 
@@ -2124,7 +2426,7 @@ for a specified date.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line190">line 190</a>
+        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line217">line 217</a>
     </li></ul></dd>
     
 
@@ -2206,7 +2508,7 @@ for a specified date.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line278">line 278</a>
+        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line305">line 305</a>
     </li></ul></dd>
     
 
@@ -2306,7 +2608,7 @@ for a specified date.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line259">line 259</a>
+        <a href="ElvishDate.js.html">ElvishDate.js</a>, <a href="ElvishDate.js.html#line286">line 286</a>
     </li></ul></dd>
     
 
@@ -2372,7 +2674,7 @@ for a specified date.
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0</a> on Wed Jan 10 2018 13:29:11 GMT-0300 (-03)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0</a> on Wed Jan 10 2018 23:26:48 GMT-0300 (-03)
 </footer>
 
 <script> prettyPrint(); </script>

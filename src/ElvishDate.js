@@ -1,6 +1,8 @@
 import calendar from './helpers/calendar';
 import convert from './helpers/converter';
+import definitions from './helpers/definitions';
 import constants from './helpers/constants';
+import utils from './helpers/utils';
 
 // TODO validate and throw exceptions on set... methods
 
@@ -41,6 +43,31 @@ class ElvishDate {
    */
   static get length() {
     return 4;
+  }
+
+  /**
+   * Constants for periods
+   * @returns {{YESTARE, TUILE, LAIRE, YAVIE, ENDERI, QUELLE, HRIVE, COIRE, METTARE}}
+   */
+  static get periods() {
+    return definitions.periods;
+  }
+
+  /**
+   * Constants for days of week
+   * @returns {{ELENYA, ANARYA, ISILYA, ALDUYA, MENELYA, VALANYA}}
+   */
+  static get daysOfWeek() {
+    return definitions.daysOfWeek;
+  }
+
+  /**
+   * Helper for getting number for Roman Numeral of Yen
+   * @param {string} romanNumeral
+   * @returns {number}
+   */
+  static yen(romanNumeral) {
+    return utils.getIntFromRomanNumeral(romanNumeral);
   }
 
   /**

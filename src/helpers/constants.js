@@ -1,3 +1,5 @@
+import definitions from './definitions';
+
 function yestareDay(loaBegins, loaEnds, dayOfMarch) {
   return {
     begins: loaBegins,
@@ -29,7 +31,7 @@ const constants = {
     { name: 'Tuilë', length: { standard: 54, leap: 54 } },
     { name: 'Lairë', length: { standard: 72, leap: 72 } },
     { name: 'Yávië', length: { standard: 54, leap: 54 } },
-    { name: 'Ender', length: { standard: 3, leap: 6 } },
+    { name: 'Enderi', length: { standard: 3, leap: 6 } },
     { name: 'Quellë', length: { standard: 54, leap: 54 } },
     { name: 'Hrívë', length: { standard: 72, leap: 72 } },
     { name: 'Coirë', length: { standard: 54, leap: 54 } },
@@ -40,7 +42,7 @@ const constants = {
   daysOfWeek: [
     'Elenya', 'Anarya', 'Isilya', 'Aldúya', 'Menelya', 'Valanya',
   ],
-  firstYestareDayOfWeek: 0,
+  firstYestareDayOfWeek: definitions.daysOfWeek.ELENYA,
   /* eslint-disable array-bracket-spacing */
   yestareMap: [
     [ yestareDay(1, 144, 26) ], // I

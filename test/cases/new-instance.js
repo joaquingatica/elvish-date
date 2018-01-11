@@ -10,18 +10,18 @@ describe('New Instance', function () {
     });
   });
   describe('constructor(yen, loa, period)', function () {
-    const yen = 15;
+    const yen = ElvishDate.yen('XV');
     const loa = 120;
-    const period = 1;
+    const period = ElvishDate.periods.YESTARE;
     it(`should be created for yen ${yen}, loa ${loa} and period ${period}`, function () {
       const date = new ElvishDate(yen, loa, period);
       utils.elvishEquals(date, yen, loa, period);
     });
   });
   describe('constructor(yen, loa, period, day)', function () {
-    const yen = 15;
+    const yen = ElvishDate.yen('XV');
     const loa = 119;
-    const period = 2;
+    const period = ElvishDate.periods.LAIRE;
     const day = 3;
     it(`should be created for yen ${yen}, loa ${loa}, period ${period} and day ${day}`, function () {
       const date = new ElvishDate(yen, loa, period, day);
@@ -30,9 +30,9 @@ describe('New Instance', function () {
   });
   describe('constructor(ElvishDate)', function () {
     it('should be created for provided Elvish Date', function () {
-      const yen = 15;
+      const yen = ElvishDate.yen('XV');
       const loa = 119;
-      const period = 2;
+      const period = ElvishDate.periods.LAIRE;
       const day = 3;
       const elvishDate = new ElvishDate(yen, loa, period, day);
       const date = new ElvishDate(elvishDate);

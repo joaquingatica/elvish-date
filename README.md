@@ -4,8 +4,6 @@ This npm module `elvish-date` includes the `ElvishDate` class that mimics the st
 
 NPM module for Elvish Calendar conversion of dates and utilities
 
-**WARNING: Module in development, no stable release yet**
-
 ---
 
 # Documentation
@@ -39,6 +37,9 @@ Find the JSDoc documentation [here](https://joaquingatica.github.io/elvish-date/
         * [.toDate()](#ElvishDate+toDate) ⇒ <code>Date</code>
     * _static_
         * [.length](#ElvishDate.length) ⇒ <code>number</code>
+        * [.periods](#ElvishDate.periods) ⇒ <code>Object</code>
+        * [.daysOfWeek](#ElvishDate.daysOfWeek) ⇒ <code>Object</code>
+        * [.yen(romanNumeral)](#ElvishDate.yen) ⇒ <code>number</code>
         * [.fromDate([...args])](#ElvishDate.fromDate) ⇒ [<code>ElvishDate</code>](#ElvishDate)
         * [.now()](#ElvishDate.now) ⇒ <code>number</code>
 
@@ -185,9 +186,32 @@ Get current ElvishDate as Date
 <a name="ElvishDate.length"></a>
 
 ### ElvishDate.length ⇒ <code>number</code>
-Number of arguments handled by constructor
+Number of arguments handled by constructor (4)
 
 **Kind**: static property of [<code>ElvishDate</code>](#ElvishDate)  
+<a name="ElvishDate.periods"></a>
+
+### ElvishDate.periods ⇒ <code>Object</code>
+Constants for periods
+
+**Kind**: static property of [<code>ElvishDate</code>](#ElvishDate)  
+<a name="ElvishDate.daysOfWeek"></a>
+
+### ElvishDate.daysOfWeek ⇒ <code>Object</code>
+Constants for days of week
+
+**Kind**: static property of [<code>ElvishDate</code>](#ElvishDate)  
+<a name="ElvishDate.yen"></a>
+
+### ElvishDate.yen(romanNumeral) ⇒ <code>number</code>
+Helper for getting number for Roman Numeral of Yen
+
+**Kind**: static method of [<code>ElvishDate</code>](#ElvishDate)  
+
+| Param | Type |
+| --- | --- |
+| romanNumeral | <code>string</code> | 
+
 <a name="ElvishDate.fromDate"></a>
 
 ### ElvishDate.fromDate([...args]) ⇒ [<code>ElvishDate</code>](#ElvishDate)

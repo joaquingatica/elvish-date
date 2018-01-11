@@ -25,10 +25,10 @@ const utils = {
       L: 50, XL: 40, X: 10, IX: 9, V: 5, IV: 4, I: 1,
     };
     /* eslint-enable object-property-newline */
-    let num = 0;
     if (!(string && validator.test(string))) {
-      return false;
+      return -1;
     }
+    let num = 0;
     let m = token.exec(string);
     while (m) {
       num += key[m[0]];

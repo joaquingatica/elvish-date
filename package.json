@@ -13,7 +13,8 @@
     "start": "yarn run build && node lib",
     "lint": "eslint src test",
     "docs": "jsdoc -d docs src",
-    "docs:md": "jsdoc2md src/ElvishDate.js > DOCS.md"
+    "docs:md": "jsdoc2md src/ElvishDate.js > DOCS.md",
+    "release": "yarn build && yarn lint && yarn test && yarn docs && yarn docs:md"
   },
   "repository": {
     "type": "git",

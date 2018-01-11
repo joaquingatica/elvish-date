@@ -17,16 +17,10 @@ const calendar = {
   isPeriodSingleDay(period) {
     return constants.periods[period].length.standard === 1;
   },
-  isPeriodMonth(period) {
-    return (period > 1 && period < 5) || (period > 5 && period < 9);
-  },
   isLeapLoa(loa) {
     return loa % 12 === 0;
   },
 
-  calculateMonthFromPeriod(period) {
-    return (period < 4) ? period - 1 : period - 2;
-  },
   calculatePeriodAndDayOfPeriod(loa, dayOfLoa) {
     const periods = constants.periods;
     const isLeap = this.isLeapLoa(loa);
@@ -114,7 +108,7 @@ const calendar = {
       const periodInfo = periods[i];
       daysOfLoa += isLeapLoa ? periodInfo.length.leap : periodInfo.length.standard;
     }
-    daysOfLoa += dayOfPeriod;
+    daysOfLoa += this.isPeriodSingleDay(period) ? 1 : dayOfPeriod;
     return daysOfLoa;
   },
   calculateWeek(yen, loa, dayOfLoa) {
@@ -125,7 +119,7 @@ const calendar = {
   },
   calculateDayOfWeek(yen, loa, dayOfLoa) {
     const weekDayOfYestare = this.calculateYestareDayOfWeek(yen, loa);
-    const dayOfWeek = ((weekDayOfYestare + (dayOfLoa - 1)) - 1) % 6;
+    const dayOfWeek = ((weekDayOfYestare + (dayOfLoa - 1)) - 1) % 6 + 1;
     return dayOfWeek;
   },
 };

@@ -10,7 +10,7 @@ describe('New Instance', function () {
     });
   });
   describe('constructor(yen, loa, period)', function () {
-    const yen = 'XV';
+    const yen = 15;
     const loa = 120;
     const period = 1;
     it(`should be created for yen ${yen}, loa ${loa} and period ${period}`, function () {
@@ -19,7 +19,7 @@ describe('New Instance', function () {
     });
   });
   describe('constructor(yen, loa, period, day)', function () {
-    const yen = 'XIV';
+    const yen = 15;
     const loa = 119;
     const period = 2;
     const day = 3;
@@ -30,7 +30,7 @@ describe('New Instance', function () {
   });
   describe('constructor(ElvishDate)', function () {
     it('should be created for provided Elvish Date', function () {
-      const yen = 'XIV';
+      const yen = 15;
       const loa = 119;
       const period = 2;
       const day = 3;

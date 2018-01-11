@@ -134,6 +134,7 @@ class ElvishDate {
     const yen = this.getYen();
     const loa = this.getLoa();
     const dayOfLoa = calendar.calculateDayOfLoa(yen, loa, this.getPeriod(), this.getDayOfPeriod());
+    console.log(`dayOfLoa ${dayOfLoa}`);
     return calendar.calculateDayOfWeek(yen, loa, dayOfLoa);
   }
   /**

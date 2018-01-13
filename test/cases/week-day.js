@@ -1,4 +1,5 @@
 import assert from 'assert';
+import calendar from '../../src/helpers/calendar';
 import ElvishDate from '../../src/ElvishDate';
 
 describe('Week Day', function () {
@@ -16,11 +17,15 @@ describe('Week Day', function () {
     const yen = ElvishDate.yen('XV');
     const loa = 1;
     const period = ElvishDate.periods.HRIVE;
-    const day = 50;
-    const weekDay = ElvishDate.daysOfWeek.VALANYA;
-    it(`weekday for yen ${yen}, loa ${loa}, period ${period} and day ${day} should be`, function () {
-      const date = new ElvishDate(yen, loa, period, day);
-      assert.equal(date.getDayOfWeek(), weekDay);
-    });
+    for (
+      let day = 45, weekDay = ElvishDate.daysOfWeek.ELENYA;
+      weekDay <= ElvishDate.daysOfWeek.VALANYA;
+      day += 1, weekDay += 1
+    ) {
+      it(`weekday for yen ${yen}, loa ${loa}, period ${period} and day ${day} should be ${calendar.getDayOfWeekName(weekDay)}`, function () {
+        const date = new ElvishDate(yen, loa, period, day);
+        assert.equal(date.getDayOfWeek(), weekDay);
+      });
+    }
   });
 });

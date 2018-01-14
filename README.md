@@ -1,5 +1,7 @@
 # Elvish Date library
 
+[![npm version](https://badge.fury.io/js/elvish-date.svg)](https://badge.fury.io/js/elvish-date)
+
 This npm module `elvish-date` includes the `ElvishDate` class that mimics the standard JavaScript [`Date`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) class, but for the Reckoning of Imladris (aka Imladris Calendar or Elvish Calendar).
 
 NPM module for Elvish Calendar conversion of dates and utilities

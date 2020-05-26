@@ -6,15 +6,15 @@
   "scripts": {
     "build:test": "babel test -d lib-test --copy-files",
     "start:test": "mocha lib-test --require babel-core/register",
-    "test": "yarn run build:test && yarn run start:test",
+    "test": "npm run build:test && npm run start:test",
     "dist": "webpack",
     "prepublish": "babel src -d lib --copy-files",
-    "build": "yarn run dist && yarn run prepublish",
-    "start": "yarn run build && node lib",
+    "build": "npm run dist && npm run prepublish",
+    "start": "npm run build && node lib",
     "lint": "eslint src test",
     "docs": "jsdoc -d docs src",
     "docs:md": "jsdoc2md src/ElvishDate.js > DOCS.md",
-    "release": "yarn build && yarn lint && yarn test && yarn docs && yarn docs:md"
+    "release": "npm run build && npm run lint && npm run test && npm run docs && npm run docs:md"
   },
   "repository": {
     "type": "git",
@@ -38,8 +38,8 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.0",
     "jsdoc": "^3.5.5",
-    "jsdoc-to-markdown": "^3.0.4",
-    "mocha": "^4.0.1",
+    "jsdoc-to-markdown": "^5.0.3",
+    "mocha": "^7.2.0",
     "webpack": "^3.10.0"
   },
   "dependencies": {}

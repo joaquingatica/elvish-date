@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "build:test": "babel test -d lib-test --copy-files",
-    "start:test": "mocha lib-test --require babel-core/register",
+    "start:test": "mocha lib-test --require @babel/register",
     "test": "npm run build:test && npm run start:test",
     "dist": "webpack",
     "prepublish": "babel src -d lib --copy-files",
@@ -29,9 +29,11 @@
   "author": "Joaquin Gatica <joaquingatica@gmail.com> (https://about.me/joaquingatica)",
   "license": "ISC",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.1",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/register": "^7.9.0",
+    "babel-loader": "^8.1.0",
     "eslint": "^3.17.1",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",

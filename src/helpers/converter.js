@@ -1,5 +1,6 @@
 import calendar from './calendar';
 import utils from './utils';
+// eslint-disable-next-line import/no-cycle
 import ElvishDate from '../ElvishDate';
 
 const converter = {

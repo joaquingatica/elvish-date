@@ -31,8 +31,8 @@ describe('From Date', function () {
     const milliseconds = dateTmp.getMilliseconds();
     it('should be created for provided year, month, day, hours, minutes, seconds, milliseconds', function () {
       const date = new Date(year, month, day, hours, minutes, seconds, milliseconds);
-      const elvishDate =
-        ElvishDate.fromDate(year, month, day, hours, minutes, seconds, milliseconds);
+      const elvishDate = ElvishDate
+        .fromDate(year, month, day, hours, minutes, seconds, milliseconds);
       assert.equal(elvishDate.toDate().toString(), date.toString());
     });
     it('should be created for provided year, month, day, hours, minutes, seconds', function () {

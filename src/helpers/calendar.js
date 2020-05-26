@@ -22,7 +22,7 @@ const calendar = {
   },
 
   calculatePeriodAndDayOfPeriod(loa, dayOfLoa) {
-    const periods = constants.periods;
+    const { periods } = constants;
     const isLeap = this.isLeapLoa(loa);
     let period = 0;
     let dayOfPeriod = dayOfLoa;
@@ -79,7 +79,7 @@ const calendar = {
   calculateYestareDayOfWeek(yen, loa) {
     const offsetRegular = -1;
     const offsetLeap = 2;
-    const firstYestareDayOfWeek = constants.firstYestareDayOfWeek;
+    const { firstYestareDayOfWeek } = constants;
 
     const totalLoar = (yen * 144) + (loa - 1);
     const totalLeapLoar = Math.floor(totalLoar / 12);
@@ -102,7 +102,7 @@ const calendar = {
   },
   calculateDayOfLoa(yen, loa, period, dayOfPeriod) {
     const isLeapLoa = this.isLeapLoa(loa);
-    const periods = constants.periods;
+    const { periods } = constants;
     let daysOfLoa = 0;
     for (let i = 0; i < period; i += 1) {
       const periodInfo = periods[i];

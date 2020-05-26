@@ -34,7 +34,7 @@
     "@babel/preset-env": "^7.9.6",
     "@babel/register": "^7.9.0",
     "babel-loader": "^8.1.0",
-    "eslint": "^3.17.1",
+    "eslint": "^4.18.2",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",

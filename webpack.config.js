@@ -1,4 +1,5 @@
 module.exports = {
+  mode: 'production',
   entry: './src/index.js',
   devtool: 'source-map',
   output: {
@@ -10,7 +11,7 @@ module.exports = {
     umdNamedDefine: true
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /(\.js)$/,
         loader: 'babel-loader',
